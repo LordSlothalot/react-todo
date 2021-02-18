@@ -1,5 +1,5 @@
 import React from "react";
-import { Checkbox, IconButton, ListItem, Typography } from "@material-ui/core";
+import { Checkbox, IconButton, ListItem, Typography, ListItemIcon, ListItemSecondaryAction, ListItemText } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 
 const Todo = ({ todo, toggleComplete, removeTodo }) => {
@@ -13,19 +13,26 @@ const Todo = ({ todo, toggleComplete, removeTodo }) => {
   
     return (
       <ListItem style={{ display: "flex" }}>
-        <Checkbox checked={todo.completed} onClick={handleCheckboxClick} />
-        <Typography
-          noWrap
-          variant="body1"
-          style={{
-            textDecoration: todo.completed ? "line-through" : null
-          }}
-        >
-          {todo.task}
-        </Typography>
-        <IconButton onClick={handleRemoveClick}>
-          <CloseIcon />
-        </IconButton>
+        <ListItemIcon>
+          <Checkbox edge="start" checked={todo.completed} onClick={handleCheckboxClick} />
+        </ListItemIcon>
+        <ListItemText>
+          <Typography
+            noWrap
+            variant="body1"
+            style={{
+              textDecoration: todo.completed ? "line-through" : null
+            }}
+          >
+            {todo.task}
+          </Typography>
+        </ListItemText>
+
+        <ListItemSecondaryAction>
+          <IconButton edge="end" onClick={handleRemoveClick}>
+            <CloseIcon />
+          </IconButton>
+        </ListItemSecondaryAction>
       </ListItem>
     );
   }

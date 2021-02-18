@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import './TodoApp.css';
 import SideBar from "./components/SideBar";
 import MainSection from "./components/MainSection";
+import Divider from "@material-ui/core/Divider";
+import { Grid } from "@material-ui/core";
 
 
 const LOCAL_STORAGE_KEY = "react-todo-list-todos";
@@ -30,6 +32,7 @@ const App = () => {
     return(
       <>
         <MainSection todos={todos} setTodos={setTodos}/>
+        <Divider/>
         <SideBar todos={todos} setTodos={setTodos}/>
       </>
     );
@@ -37,12 +40,20 @@ const App = () => {
 
   return (
     <>
-      <div class="sidebar">
+      {/* <div class="sidebar">
         <SideBar todos={todos} setTodos={setTodos}/>
       </div>
       <div class="main">
         <MainSection todos={todos} setTodos={setTodos}/>
-      </div>
+      </div> */}
+      <Grid container direction="row">
+        <Grid item xs={4}>
+          <SideBar todos={todos} setTodos={setTodos}/>
+        </Grid>
+        <Grid item xs={8}>
+          <MainSection todos={todos} setTodos={setTodos}/>
+        </Grid>
+      </Grid>
     </>
   );
 }
