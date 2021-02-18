@@ -4,12 +4,22 @@ import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 import './TodoApp.css';
 import Button from '@material-ui/core/Button';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 
 const LOCAL_STORAGE_KEY = "react-todo-list-todos";
 
 const App = () => {
   const [todos, setTodos] = useState([]);
+  const [showCompleted, setShowCompleted] = useState(true);
+  const [width, setWidth] = React.useState(window.innerWidth);
+  
+  const breakpoint = 620;
+
+  React.useEffect(() => { window.addEventListener("resize", () => setWidth(window.innerWidth));}, []);
+
+  // return width < breakpoint ? <MobileComponent /> : <DesktopComponent />;
 
   useEffect(() => {
     const storageTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
@@ -50,26 +60,38 @@ const App = () => {
     }
   }
   
+  const toggleShowCompleted = () => {
+    setShowCompleted(!showCompleted);
+  }
 
   return (
     <div>
       <div class="sidebar">
-        <TodoList
-          todos={todos}
-          removeTodo={removeTodo}
-          toggleComplete={toggleComplete}
-        />
+          <h3>
+            Tasks
+          </h3>
+          <FormControlLabel
+            className="toggle"
+            onChange={toggleShowCompleted} 
+            control={<Switch name="checkedA" />}
+            label="Show Completed"
+          />
+          <TodoList
+            todos={todos}
+            removeTodo={removeTodo}
+            toggleComplete={toggleComplete}
+            filterOption={showCompleted}
+          />
       </div>
       <div class="main">
-        
-        <Typography style={{ padding: 16 }} variant="h4">
+        <Typography noWrap style={{ padding: 16 }} variant="h4">
           le todos
         </Typography>
         <TodoForm addTodo={addTodo} />
         <Button onClick={clearAll}>Clear All</Button>
-        
       </div>
     </div>
+    
   );
 }
 

@@ -15,6 +15,7 @@ const Todo = ({ todo, toggleComplete, removeTodo }) => {
       <ListItem style={{ display: "flex" }}>
         <Checkbox checked={todo.completed} onClick={handleCheckboxClick} />
         <Typography
+          noWrap
           variant="body1"
           style={{
             textDecoration: todo.completed ? "line-through" : null
