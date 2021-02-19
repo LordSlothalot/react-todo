@@ -10,6 +10,36 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 
+const ClearAllDialogue = ({
+  open,
+  handleClose,
+  clearAll
+}) => {
+  return (
+    <Dialog
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+    >
+      <DialogTitle id="alert-dialog-title">{"Clear all tasks"}</DialogTitle>
+      <DialogContent>
+        <DialogContentText id="alert-dialog-description">
+          Are you sure you want to clear all tasks?
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose} color="primary">
+          Cancel
+        </Button>
+        <Button onClick={clearAll} color="primary" autoFocus>
+          Clear
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+}
+
 
 const MainSection = ({ 
   todos,
@@ -18,7 +48,7 @@ const MainSection = ({
 
   const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
+  const handleOpenClearAllDialogue = () => {
     setOpen(true);
   };
 
@@ -37,46 +67,30 @@ const MainSection = ({
 
   return (
     <>
-      <Box width="100%">
-        <Grid container direction="column" justify="center" alignItems="center">
+      <Box width="100%" height="100%">
+        <Grid item container spacing={1} direction="column" justify="center" alignItems="center" height="100%" width="100%">
           <Grid item  justify="center">
             <Typography noWrap style={{ padding: 16 }} variant="h4">
               le todos
             </Typography>
           </Grid>
+
           <Grid item>
             <TodoForm addTodo={addTodo} />
           </Grid>
-          <Grid item>
-            <Button variant="outlined" onClick={handleClickOpen}>Clear All</Button>
-          </Grid>
-          <Grid container direction="column" justify="flex-end">
+          
+          <Grid item container direction="column" justify="flex-end" alignItems="center" height="100%">
             <Grid item>
-              <Dialog
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-              >
-                <DialogTitle id="alert-dialog-title">{"Clear all tasks"}</DialogTitle>
-                <DialogContent>
-                  <DialogContentText id="alert-dialog-description">
-                    Are you sure you want to clear all tasks?
-                  </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={handleClose} color="primary">
-                    Cancel
-                  </Button>
-                  <Button onClick={clearAll} color="primary" autoFocus>
-                    Clear
-                  </Button>
-                </DialogActions>
-              </Dialog>
+              <Button variant="outlined" onClick={handleOpenClearAllDialogue}>Clear All</Button>
             </Grid>
           </Grid>
         </Grid>
       </Box>
+      <ClearAllDialogue 
+        open={open}
+        handleClose={handleClose}
+        clearAll={clearAll}
+      />
     </>
   );
 }
