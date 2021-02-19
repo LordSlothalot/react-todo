@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import TodoList from "./TodoList";
-import { Switch, Grid, Divider, Paper, Typography } from "@material-ui/core";
+import { Switch, Grid } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { makeStyles } from '@material-ui/core/styles';
 
