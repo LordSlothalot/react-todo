@@ -17,13 +17,7 @@ const Todo = ({ todo, toggleComplete, removeTodo }) => {
           <Checkbox edge="start" checked={todo.completed} onClick={handleCheckboxClick} color="disabled"/>
         </ListItemIcon>
         <ListItemText>
-          <Typography
-            noWrap
-            variant="body1"
-            // style={{
-            //   textDecoration: todo.completed ? "line-through" : null
-            // }}
-          >
+          <Typography noWrap variant="body1">
             {todo.task}
           </Typography>
         </ListItemText>

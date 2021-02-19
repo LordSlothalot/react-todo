@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import TodoList from "./TodoList";
-import { Switch, Grid, Divider } from "@material-ui/core";
+import { Switch, Grid, Divider, Paper } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 
@@ -45,7 +45,7 @@ const SideBar = ({
           <FormControlLabel
             className="toggle"
             onChange={toggleShowCompleted} 
-            control={<Switch size="small" checked={showCompleted} name="checkedA" />}
+            control={<Switch size="small" checked={showCompleted} color="primary"/>}
             label="Show Completed"
           />
         </Grid>

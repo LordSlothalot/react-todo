@@ -40,12 +40,6 @@ const App = () => {
 
   return (
     <>
-      {/* <div class="sidebar">
-        <SideBar todos={todos} setTodos={setTodos}/>
-      </div>
-      <div class="main">
-        <MainSection todos={todos} setTodos={setTodos}/>
-      </div> */}
       <Grid container direction="row">
         <Grid item xs={4}>
           <SideBar todos={todos} setTodos={setTodos}/>
