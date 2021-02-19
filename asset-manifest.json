@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/LordSlothalot.github.io/react-todo/static/css/main.d5c440c0.chunk.css",
+    "main.js": "/LordSlothalot.github.io/react-todo/static/js/main.206508ea.chunk.js",
+    "main.js.map": "/LordSlothalot.github.io/react-todo/static/js/main.206508ea.chunk.js.map",
+    "runtime-main.js": "/LordSlothalot.github.io/react-todo/static/js/runtime-main.b4ee5949.js",
+    "runtime-main.js.map": "/LordSlothalot.github.io/react-todo/static/js/runtime-main.b4ee5949.js.map",
+    "static/js/2.3f7f4145.chunk.js": "/LordSlothalot.github.io/react-todo/static/js/2.3f7f4145.chunk.js",
+    "static/js/2.3f7f4145.chunk.js.map": "/LordSlothalot.github.io/react-todo/static/js/2.3f7f4145.chunk.js.map",
+    "index.html": "/LordSlothalot.github.io/react-todo/index.html",
+    "static/css/main.d5c440c0.chunk.css.map": "/LordSlothalot.github.io/react-todo/static/css/main.d5c440c0.chunk.css.map",
+    "static/js/2.3f7f4145.chunk.js.LICENSE.txt": "/LordSlothalot.github.io/react-todo/static/js/2.3f7f4145.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b4ee5949.js",
+    "static/js/2.3f7f4145.chunk.js",
+    "static/css/main.d5c440c0.chunk.css",
+    "static/js/main.206508ea.chunk.js"
+  ]
+}
