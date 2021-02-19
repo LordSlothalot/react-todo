@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import TodoList from "./TodoList";
-import { Switch, Grid, Divider, Paper } from "@material-ui/core";
+import { Switch, Grid, Divider, Paper, Typography } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import { makeStyles } from '@material-ui/core/styles';
 
-
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: '2px 4px',
+    margin: '2px 4px',
+  },
+}));
 
 const SideBar = ({ 
   todos,
   setTodos
 }) => {
+  const classes = useStyles();
+  
   const [showCompleted, setShowCompleted] = useState(true);
   
   const toggleComplete = (id) => {
@@ -35,13 +43,13 @@ const SideBar = ({
 
   return (
     <>
-      <Grid container alignItems="center" justify="space-between">
+      <Grid container alignItems="center" justify="space-between"  className={classes.root} >
         <Grid item>
           <h2>
             Tasks
           </h2>
         </Grid>
-        <Grid item>
+        <Grid item >
           <FormControlLabel
             className="toggle"
             onChange={toggleShowCompleted} 
@@ -50,12 +58,11 @@ const SideBar = ({
           />
         </Grid>
       </Grid>
-      <Divider />
       <TodoList
         todos={todos}
         removeTodo={removeTodo}
         toggleComplete={toggleComplete}
-        filterOption={showCompleted}
+        showCompleted={showCompleted}
       />
     </>
   );

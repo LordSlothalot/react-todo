@@ -3,7 +3,7 @@ import { Checkbox, IconButton, ListItem, Typography, ListItemIcon, ListItemSecon
 import CloseIcon from "@material-ui/icons/Close";
 
 
-const Todo = ({ todo, toggleComplete, removeTodo }) => {
+const TodoItem = ({ todo, toggleComplete, removeTodo }) => {
     function handleCheckboxClick() {
       toggleComplete(todo.id);
     }
@@ -12,7 +12,7 @@ const Todo = ({ todo, toggleComplete, removeTodo }) => {
     }
   
     return (
-      <ListItem style={{ display: "flex", backgroundColor: todo.completed ? "#77dd77" : "#ffb347"}}>
+      <ListItem style={{ display: "flex", backgroundColor: todo.completed ? "#a5d6a7" : "#ffd180"}}>
         <ListItemIcon>
           <Checkbox edge="start" checked={todo.completed} onClick={handleCheckboxClick} color="disabled"/>
         </ListItemIcon>
@@ -31,4 +31,4 @@ const Todo = ({ todo, toggleComplete, removeTodo }) => {
     );
   }
 
-export default Todo;
+export default TodoItem;

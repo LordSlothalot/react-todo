@@ -9,7 +9,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AddIcon from '@material-ui/icons/Add';
 import { makeStyles } from '@material-ui/core/styles';
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: '2px 4px',
@@ -29,19 +28,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function TodoForm({ addTodo }) {
+const CreateTaskButton = ({ addTodo }) => {
     const [todo, setTodo] = useState({
       id: "",
       task: "",
       completed: false
     });
   
-    function handleTaskInputChange(e) {
+    const handleTaskInputChange = (e) => {
       setTodo({ ...todo, task: e.target.value });
     }
   
-    function handleSubmit(e) {
-      e.preventDefault(); //prevent browser refresh
+    const handleSubmit = (e) => {
+      e.preventDefault();
       if (todo.task.trim()) {
         addTodo({ ...todo, id: uuid.v4() });
         setTodo({ ...todo, task: "" });
@@ -53,7 +52,7 @@ function TodoForm({ addTodo }) {
     return (
       <Paper component="form" className={classes.root} onSubmit={handleSubmit}>
         <InputBase
-        className={classes.input}
+          className={classes.input}
           placeholder="Create task"
           value={todo.task}
           onChange={handleTaskInputChange}
@@ -61,8 +60,7 @@ function TodoForm({ addTodo }) {
         <Divider className={classes.divider} orientation="vertical" />
         <IconButton className={classes.iconButton} type="submit"><AddIcon /></IconButton>
       </Paper>
-
     );
   }
   
-  export default TodoForm;
+  export default CreateTaskButton;

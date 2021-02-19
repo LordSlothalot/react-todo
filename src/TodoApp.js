@@ -3,8 +3,7 @@ import './TodoApp.css';
 import SideBar from "./components/SideBar";
 import MainSection from "./components/MainSection";
 import Divider from "@material-ui/core/Divider";
-import { Grid } from "@material-ui/core";
-
+import { Grid, Container, Paper } from "@material-ui/core";
 
 const LOCAL_STORAGE_KEY = "react-todo-list-todos";
 
@@ -26,12 +25,11 @@ const App = () => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
   }, [todos]);
 
-  // return width < breakpoint ? <MobileComponent /> : <DesktopComponent />;
-
   if (width < breakpoint) {
     return(
       <>
         <MainSection todos={todos} setTodos={setTodos}/>
+        <br/>
         <Divider/>
         <SideBar todos={todos} setTodos={setTodos}/>
       </>
@@ -40,14 +38,18 @@ const App = () => {
 
   return (
     <>
-      <Grid container direction="row">
-        <Grid item xs={4}>
-          <SideBar todos={todos} setTodos={setTodos}/>
+      <Container maxWidth={false} disableGutters={true}>
+        <Paper>
+        <Grid container direction="row">
+          <Grid item xs={4}>
+            <SideBar todos={todos} setTodos={setTodos}/>
+          </Grid>
+          <Grid item xs={8}>
+            <MainSection todos={todos} setTodos={setTodos}/>
+          </Grid>
         </Grid>
-        <Grid item xs={8}>
-          <MainSection todos={todos} setTodos={setTodos}/>
-        </Grid>
-      </Grid>
+        </Paper>
+      </Container>
     </>
   );
 }

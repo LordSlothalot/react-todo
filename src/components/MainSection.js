@@ -1,6 +1,6 @@
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import TodoForm from "./TodoForm";
+import TodoForm from "./CreateTaskButton";
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -19,12 +19,10 @@ const ClearAllDialogue = ({
     <Dialog
       open={open}
       onClose={handleClose}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title">{"Clear all tasks"}</DialogTitle>
+      <DialogTitle>{"Clear all tasks"}</DialogTitle>
       <DialogContent>
-        <DialogContentText id="alert-dialog-description">
+        <DialogContentText>
           Are you sure you want to clear all tasks?
         </DialogContentText>
       </DialogContent>
@@ -67,25 +65,23 @@ const MainSection = ({
 
   return (
     <>
-      <Box width="100%" height="100%">
-        <Grid item container spacing={1} direction="column" justify="center" alignItems="center" height="100%" width="100%">
-          <Grid item  justify="center">
-            <Typography noWrap style={{ padding: 16 }} variant="h4">
-              le todos
-            </Typography>
-          </Grid>
+      <Grid item container spacing={1} direction="column" justify="center" alignItems="center" height="100%" width="100%">
+        <Grid item  justify="center">
+          <Typography noWrap style={{ padding: 16 }} variant="h4">
+            le todos
+          </Typography>
+        </Grid>
 
+        <Grid item>
+          <TodoForm addTodo={addTodo} />
+        </Grid>
+        
+        <Grid item container direction="column" justify="flex-end" alignItems="center" height="100%">
           <Grid item>
-            <TodoForm addTodo={addTodo} />
-          </Grid>
-          
-          <Grid item container direction="column" justify="flex-end" alignItems="center" height="100%">
-            <Grid item>
-              <Button variant="outlined" onClick={handleOpenClearAllDialogue}>Clear All</Button>
-            </Grid>
+            <Button variant="outlined" onClick={handleOpenClearAllDialogue}>Clear All</Button>
           </Grid>
         </Grid>
-      </Box>
+      </Grid>
       <ClearAllDialogue 
         open={open}
         handleClose={handleClose}
